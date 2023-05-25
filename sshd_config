@@ -1,0 +1,15 @@
+Port 2222
+
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+LogLevel INFO
+
+AllowTcpForwarding yes
+AllowAgentForwarding yes
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+UseDNS no
+
+Subsystem	sftp internal-sftp
