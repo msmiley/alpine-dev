@@ -1,0 +1,15 @@
+#
+# CI VARS: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+#
+stages:
+  - deploy
+
+apply:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:latest
+  environment:
+    name: production
+  script:
+    - helmfile --namespace $KUBE_NAMESPACE --file $CI_PROJECT_DIR/helmfile.yaml apply --suppress-secrets
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

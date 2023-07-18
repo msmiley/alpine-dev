@@ -1,0 +1,9 @@
+helmDefaults:
+  createNamespace: false
+
+releases:
+- name: {{ requiredEnv "CI_PROJECT_NAME" }}
+  namespace: {{ requiredEnv "KUBE_NAMESPACE" }}
+  chart: .
+  values:
+    - values.yaml.gotmpl
