@@ -3,7 +3,7 @@ helmDefaults:
 
 releases:
 - name: {{ requiredEnv "CI_PROJECT_NAME" }}
-  namespace: {{ requiredEnv "KUBE_NAMESPACE" }}
+  namespace: {{ requiredEnv "CI_PROJECT_NAME" }}
   chart: .
   values:
     - values.yaml.gotmpl

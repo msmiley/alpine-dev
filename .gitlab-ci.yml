@@ -10,6 +10,6 @@ apply:
   environment:
     name: production
   script:
-    - helmfile --namespace $KUBE_NAMESPACE --file $CI_PROJECT_DIR/helm/helmfile.yaml apply --suppress-secrets
+    - helmfile --file $CI_PROJECT_DIR/helm/helmfile.yaml apply --suppress-secrets
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
