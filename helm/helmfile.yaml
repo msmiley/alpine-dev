@@ -1,6 +1,3 @@
-helmDefaults:
-  createNamespace: false
-
 releases:
 - name: {{ requiredEnv "CI_PROJECT_NAME" }}
   namespace: {{ requiredEnv "CI_PROJECT_NAME" }}
