@@ -36,20 +36,11 @@ spec:
                   {{- end }}
       {{- end }}
       {{- end }}
-      tolerations:
-        - key: node-role.kubernetes.io/master
-          effect: NoSchedule
       containers:
         - name: "{{ .Chart.Name }}"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           args:
-          {{- range $key, $value := .Values.extraArgs }}
-            {{- /* Accept keys without values or with false as value */}}
-            {{- if eq ($value | quote | len) 2 }}
-            - --{{ $key }}
-            {{- else }}
-            - --{{ $key }}={{ $value }}
-            {{- end }}
+            - {{ .Values.publicKey }}
           {{- end }}
           env:
           {{- if .Values.envVars }}
