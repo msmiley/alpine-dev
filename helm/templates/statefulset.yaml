@@ -41,7 +41,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           args:
             - {{ .Values.publicKey }}
-          {{- end }}
           env:
           {{- if .Values.envVars }}
           {{- toYaml .Values.envVars | nindent 10 }}
