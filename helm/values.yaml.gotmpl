@@ -1,0 +1,13 @@
+image:
+  repository: "msmiley/dev"
+  tag: "latest"
+
+# ingress prefix is followed by baseDomain
+ingressPrefix: msmiley
+baseDomain: bronzecatapult.com
+
+# persistence is used for the home drive to prevent loss of data
+# upon pod restarts
+persistence:
+  storageClass: csi-rbd-sc
+  size: 100Gi
