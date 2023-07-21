@@ -64,6 +64,7 @@ spec:
         - name: {{ .Release.Name }}
           configMap:
             name: {{ .Release.Name }}
+            defaultMode: 256
   volumeClaimTemplates:
     - metadata:
         name: "{{ .Release.Name }}-home"
