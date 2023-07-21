@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}
 data:
-  authorized_keys:
+  authorized_keys: |-
   {{- range .Values.publicKeys }}
     {{ . }}
   {{- end }}
