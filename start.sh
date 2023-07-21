@@ -5,8 +5,11 @@ echo "> running as: `id`"
 # add pubkey from arg
 if [[ $# -gt 0 ]]
 then
-  echo "> adding public ssh key from arg"
-  echo $1 >> /home/dev/.ssh/authorized_keys
+  for var in "$@"
+  do
+    echo "> adding a public ssh key from arg"
+    echo "$var" >> /home/dev/.ssh/authorized_keys
+  done
 fi
 
 # add pubkey from env var

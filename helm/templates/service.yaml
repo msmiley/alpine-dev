@@ -5,9 +5,9 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Release.Name }}
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
-    - port: 2222
+    - port: 22
       targetPort: 2222
       protocol: TCP
       name: ssh
