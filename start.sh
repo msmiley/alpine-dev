@@ -20,7 +20,7 @@ then
 fi
 
 # generate host keys if they don't exist
-/usr/bin/ssh-keygen -A
+/usr/bin/ssh-keygen -A -f /home/dev/.ssh
 
 echo "starting sshd..."
 # start the server
