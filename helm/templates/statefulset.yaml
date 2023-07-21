@@ -60,10 +60,10 @@ spec:
             - name: "{{ .Release.Name }}"
               mountPath: /home/dev/.ssh/authorized_keys
               readOnly: true
-  volumes:
-    - name: {{ .Release.Name }}
-      configMap:
-        name: {{ .Release.Name }}
+      volumes:
+        - name: {{ .Release.Name }}
+          configMap:
+            name: {{ .Release.Name }}
   volumeClaimTemplates:
     - metadata:
         name: "{{ .Release.Name }}-home"
