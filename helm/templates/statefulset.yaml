@@ -60,6 +60,8 @@ spec:
             - name: "{{ .Release.Name }}"
               mountPath: /home/dev/.ssh
               readOnly: true
+      securityContext:
+        runAsUser: 1000
       volumes:
         - name: {{ .Release.Name }}
           configMap:
