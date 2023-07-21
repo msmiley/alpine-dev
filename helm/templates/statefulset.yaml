@@ -40,8 +40,8 @@ spec:
         - name: "{{ .Release.Name }}"
           image: "{{ .Values.imageName }}"
           args:
-          {{- if .Values.publicKeys }}
-          {{- toYaml .Values.publicKeys | indent 10 }}
+          {{- range .Values.publicKeys }}
+            - {{ . | quote }}
           {{- end }}
           env:
           {{- if .Values.envVars }}
