@@ -41,7 +41,7 @@ spec:
           image: "{{ .Values.imageName }}"
           args:
           {{- if .Values.publicKeys }}
-          {{ toYaml .Values.publicKeys | indent 10 }}
+          {{- toYaml .Values.publicKeys | indent 10 }}
           {{- end }}
           env:
           {{- if .Values.envVars }}
