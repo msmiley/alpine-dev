@@ -38,7 +38,7 @@ spec:
       {{- end }}
       containers:
         - name: "{{ .Chart.Name }}"
-          image: "{{ .Values.image }}"
+          image: "{{ .Values.imageName }}"
           args:
             - {{ .Values.publicKey }}
           env:

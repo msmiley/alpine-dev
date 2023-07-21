@@ -1,8 +1,32 @@
+# ------------------------------------------------
+# CONTAINER_REGISTRY - registry hostname/path
+# KUBE_NAMESPACE - namespace to use for all deployments
 #
-# CI VARS: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+# VARS which should be set automatically by GitLab:
+# https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+# -------------------------------------------------
+# CI_PROJECT_NAME
+# CI_COMMIT_SHORT_SHA
+# CI_COMMIT_BRANCH
+# CI_DEFAULT_BRANCH
 #
 stages:
+  - build
   - deploy
+
+before_script:
+  - export IMAGE_NAME=$CONTAINER_REGISTRY/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+
+build:
+  stage: build
+  image: quay.io/podman/stable
+  variables:
+    STORAGE_DRIVER: vfs
+  script:
+    - podman build --tls-verify=false -t $IMAGE_NAME .
+    - podman push --tls-verify=false $IMAGE_NAME
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 apply:
   stage: deploy

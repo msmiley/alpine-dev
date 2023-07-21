@@ -3,4 +3,5 @@ releases:
   namespace: {{ requiredEnv "CI_PROJECT_NAME" }}
   chart: .
   values:
+    - imageName: "{{ requiredEnv "IMAGE_NAME" }}"
     - values.yaml.gotmpl
